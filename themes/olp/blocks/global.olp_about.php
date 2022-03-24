@@ -31,11 +31,13 @@ if (!nv_function_exists('nv_olp_about')) {
         } else {
             $block_theme = 'default';
         }
-
+        $site_logo = NV_BASE_SITEURL . $global_config['site_logo'];
         $xtpl = new XTemplate('global.olp_about.tpl', NV_ROOTDIR . '/themes/' . $block_theme . '/blocks');
         $xtpl->assign('NV_BASE_SITEURL', NV_BASE_SITEURL);
         $xtpl->assign('BLOCK_THEME', $block_theme);
         $xtpl->assign('SELECT_LANGUAGE', $lang_global['langsite']);
+        $xtpl->assign('LOGO', $site_logo);
+        $xtpl->assign('SITENAME', $global_config['site_name']);
         $xtpl->parse('main');
 
         return $xtpl->text('main');
